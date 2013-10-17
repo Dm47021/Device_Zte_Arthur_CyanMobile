@@ -7,6 +7,9 @@ rild.libargs=-d /dev/smd0
 ro.telephony.default_network=4
 DEVICE_PROVISIONED=1
 
+wifi.interface=wlan0
+wifi.supplicant_scan_interval=15
+
 dalvik.vm.heapsize=32m
 ro.sf.lcd_density=240
 ro.sf.hwrotation=180

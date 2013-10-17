@@ -32,10 +32,8 @@ WIFI_SDIO_IF_DRIVER_MODULE_PATH := "/system/lib/modules/librasdioif.ko"
 WIFI_SDIO_IF_DRIVER_MODULE_NAME := "librasdioif"
 
 # Use stock libril for now
-#TARGET_PROVIDES_LIBRIL := device/zte/arthur/prebuilt/lib/libril-qc-qmi-1.so
-#BOARD_MOBILEDATA_INTERFACE_NAME := "rmnet_sdio0"
-#BOARD_HAS_EXTRA_SYS_PROPS := true
-#USE_IPV6_ROUTE := true
+TARGET_PROVIDES_LIBRIL := device/zte/arthur/prebuilt/lib/libril.so
+BOARD_MOBILEDATA_INTERFACE_NAME := "wlan0 rmnet0"
 
 #android optimization
 WITH_JIT := true

@@ -33,7 +33,7 @@ WIFI_SDIO_IF_DRIVER_MODULE_NAME := "librasdioif"
 
 # Use stock libril for now
 TARGET_PROVIDES_LIBRIL := device/zte/arthur/prebuilt/lib/libril.so
-BOARD_MOBILEDATA_INTERFACE_NAME := "wlan0 rmnet0"
+BOARD_MOBILEDATA_INTERFACE_NAME := "wlan0, rmnet0"
 
 #android optimization
 WITH_JIT := true

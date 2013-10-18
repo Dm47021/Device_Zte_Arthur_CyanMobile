@@ -1,25 +1,40 @@
 #
 # system.prop for arthur
 #
+keyguard.no_require_sim=true
+ro.build.baseband_version=B08c
 rild.libpath=/system/lib/libril-qc-1.so
 rild.libargs=-d /dev/smd0
 ro.com.android.dataroaming=false
-ro.telephony.default_network=4
+ro.telephony.default_network=0
+ro.ril.enable.managed.roaming=1
+ro.ril.oem.nosim.ecclist=911,112,999,000,08,118,120,122,110,119,995
+ro.ril.emc.mode=2
 DEVICE_PROVISIONED=1
 ro.ril.disable.power.collapse=0
 wifi.interface=wlan0
+ro.config.wifi_chip_is_bcm=false
 wifi.supplicant_scan_interval=15
 dalvik.vm.heapsize=32m
 ro.sf.lcd_density=240
 ro.sf.hwrotation=180
 qemu.sf.lcd_density=240
-ro.ril.hsxpa=2
 ro.setupwizard.mode=DISABLED
 dalvik.vm.stack-trace-file=/data/anr/traces.txt
-dalvik.vm.execution-mode=int:jit
 video.accelerate.hw=1
-debug.sf.hw=1
+net.bt.name=Android
+qcom.bt.dev_power_class=2
+
+# Cyanmobile Props
 debug.composition.type=gpu
 persist.sys.composition.type=gpu
-persist.sys.themeId=Ice10
-persist.sys.themePackageName=com.theme.ice10
+persist.sys.ui.hw=true
+dalvik.vm.lockprof.threshold=500
+dalvik.vm.dexopt-flags=m=y
+dalvik.vm.execution-mode=int:jit
+dalvik.vm.dexopt-data-only=1
+ro.config.hw_menu_unlockscreen=false
+ro.service.swiqi.supported=true
+debug.sf.hw=1
+
+

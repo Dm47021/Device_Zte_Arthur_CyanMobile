@@ -301,6 +301,10 @@ on boot
     setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
     setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
 
+# Cyanmobile hacks
+    setprop ro.squadzone.build 1
+    setprop persist.sys.gmaps_hack 1
+
 # Include extra init file
     import /system/etc/init.local.rc
 

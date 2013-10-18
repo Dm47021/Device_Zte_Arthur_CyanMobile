@@ -2,9 +2,8 @@
 -include device/zte/arthur/BoardConfigVendor.mk
 
 
-USE_CAMERA_STUB:=true
+USE_CAMERA_STUB := false 
 
- 
 # Audio
 TARGET_PROVIDES_LIBAUDIO := true
 
@@ -38,7 +37,6 @@ WIFI_SDIO_IF_DRIVER_MODULE_NAME := "librasdioif"
 # Use stock libril for now
 #TARGET_PROVIDES_LIBRIL := device/zte/arthur/prebuilt/lib/libril.so
 TARGET_PROVIDES_LIBRIL := true 
-BOARD_MOBILEDATA_INTERFACE_NAME := "wlan0, rmnet0"
 
 #android optimization
 WITH_JIT := true
@@ -112,4 +110,8 @@ BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/zte/arthur/UsbController.cpp
 BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+
+# Releasetools
+TARGET_PROVIDES_RELEASETOOLS := true
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/zte/arthur/releasetools/arthur_ota_from_target_files
 

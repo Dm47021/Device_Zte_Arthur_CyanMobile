@@ -31,7 +31,7 @@ PRODUCT_PACKAGES += \
     gralloc.msm7x30 \
     lights.msm7x30 \
     copybit.msm7x30 \
-    overlay.msm7x30 \
+    overlay.default \
     gps.arthur \
     libOmxCore \
     libOmxVenc \
@@ -185,8 +185,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
     device/zte/arthur/prebuilt/lib/libmmipl.so:system/lib/libmmipl.so \
-    device/zte/arthur/prebuilt/lib/libcamera.so:system/lib/libcamera.so \
-    device/zte/arthur/prebuilt/lib/libcamera.so:obj/lib/libcamera.so \
     device/zte/arthur/prebuilt/lib/liboemcamera.so:system/lib/liboemcamera.so 
 
 #GPS

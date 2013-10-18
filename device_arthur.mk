@@ -26,11 +26,15 @@ PRODUCT_LOCALES += hdpi
 
 
 PRODUCT_PACKAGES += \
+    LiveWallpapers \
+    LiveWallpapersPicker \
+    VisualizationWallpapers \
+    MagicSmokeWallpapers \
+    VisualizationWallpapers \
     librs_jni \
-    abtfilt \
-    gralloc.msm7x30 \
+    gralloc.arthur \
     lights.msm7x30 \
-    copybit.msm7x30 \
+    copybit.arthur \
     overlay.default \
     gps.arthur \
     libOmxCore \

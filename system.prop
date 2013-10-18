@@ -2,16 +2,30 @@
 # system.prop for arthur
 #
 keyguard.no_require_sim=true
-ro.build.baseband_version=B08c
+# Ril
+ro.ril.disable.power.collapse=0
+ro.telephony.ril_class=LGEQualcommRIL
+ro.telephony.ril.v3=qcomuiccstack,skipbrokendatacall,signalstrengt​h,datacall,skipnullaid
+ro.ril.def.preferred.network=4
+ro.telephony.default_network=4 
 rild.libpath=/system/lib/libril-qc-1.so
 rild.libargs=-d /dev/smd0
 ro.com.android.dataroaming=false
-ro.telephony.default_network=0
 ro.ril.enable.managed.roaming=1
 ro.ril.oem.nosim.ecclist=911,112,999,000,08,118,120,122,110,119,995
 ro.ril.emc.mode=2
+persist.rild.nitz_plmn=
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+ril.subscription.types=NV
 DEVICE_PROVISIONED=1
-ro.ril.disable.power.collapse=0
+
 wifi.interface=wlan0
 ro.config.wifi_chip_is_bcm=false
 wifi.supplicant_scan_interval=15

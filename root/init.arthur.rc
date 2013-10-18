@@ -92,6 +92,9 @@ on post-fs
     write /proc/sys/net/core/wmem_max  262144
 
 
+# Modem
+mkdir /sys/devices/platform/android_usb/functions/modem 0770 system radio
+
 on boot-pause
     exec system/bin/battery_charging
 

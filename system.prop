@@ -3,17 +3,23 @@
 #
 rild.libpath=/system/lib/libril-qc-1.so
 rild.libargs=-d /dev/smd0
+ro.com.android.dataroaming=false
 ro.telephony.default_network=4
 DEVICE_PROVISIONED=1
-
 ro.ril.disable.power.collapse=0
-
 wifi.interface=wlan0
 wifi.supplicant_scan_interval=15
-
 dalvik.vm.heapsize=32m
 ro.sf.lcd_density=240
 ro.sf.hwrotation=180
-
+qemu.sf.lcd_density=240
+ro.ril.hsxpa=2
 ro.setupwizard.mode=DISABLED
 dalvik.vm.stack-trace-file=/data/anr/traces.txt
+dalvik.vm.execution-mode=int:jit
+video.accelerate.hw=1
+debug.sf.hw=1
+debug.composition.type=gpu
+persist.sys.composition.type=gpu
+persist.sys.themeId=Ice10
+persist.sys.themePackageName=com.theme.ice10

@@ -389,6 +389,10 @@ setprop ro.cdma.home.operator.numeric 311870
 setprop ro.cdma.home.operator.alpha "Boost Mobile"
 #ZTE_ZYJ_DEFPRI_110702 
 
+# Cyanmobile hacks
+    setprop ro.squadzone.build 1
+    setprop persist.sys.gmaps_hack 1
+
 # ZTE_DATA_TCP_MTU 20110727
 setprop persist.data_netmgrd_mtu 1480
 # ZTE_DATA_CDMA_IPV6 20110808
@@ -419,7 +423,6 @@ service flash_recovery /system/etc/install-recovery.sh
 service wlan_prop /system/bin/sh /system/etc/init.wlanprop.sh
     oneshot
 
-##### WiFI############
 service hostapd /system/bin/hostapd -dddd /data/hostapd/hostapd.conf
     user root
     group root
@@ -445,4 +448,4 @@ service iprenew_wlan0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-##### End WiFI############
+

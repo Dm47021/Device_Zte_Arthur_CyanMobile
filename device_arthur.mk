@@ -101,7 +101,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/lib/libaudioalsa.so:system/lib/libaudioalsa.so \
     device/zte/arthur/prebuilt/lib/libaudioalsa.so:/obj/lib/libaudioalsa.so \
-    device/zte/arthur/prebuilt/lib/libcommondefs.so:/obj/lib/libcommondefs.so
+    device/zte/arthur/prebuilt/lib/libcommondefs.so:/obj/lib/libcommondefs.so 
 
 #Adreno
 PRODUCT_COPY_FILES += \
@@ -230,9 +230,9 @@ PRODUCT_COPY_FILES += \
 #Bluetooth
 PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
-    device/zte/arthur/prebuilt/etc/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
     device/zte/arthur/prebuilt/bin/bt_testmode.sh:system/bin/bt_testmode.sh \
     device/zte/arthur/prebuilt/bin/sdptool:system/bin/sdptool \
+    device/zte/arthur/prebuilt/etc/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
     device/zte/arthur/prebuilt/bin/init.btprop.sh:system/bin/init.btprop.sh \
     device/zte/arthur/prebuilt/bin/init.modem.sh:system/bin/init.modem.sh
 
@@ -267,6 +267,10 @@ PRODUCT_COPY_FILES +=\
 
 
 # device/zte/arthur/prebuilt/lib/libril.so:system/lib/libril.so \
+
+# Add Qualcomm Properties from Code Aurora 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 
 PRODUCT_NAME := ZTE_Warp

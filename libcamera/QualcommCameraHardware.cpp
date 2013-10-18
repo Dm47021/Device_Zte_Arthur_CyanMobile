@@ -314,8 +314,8 @@ static const str_map effects[] = {
     { CameraParameters::EFFECT_SOLARIZE,   CAMERA_EFFECT_SOLARIZE },
     { CameraParameters::EFFECT_SEPIA,      CAMERA_EFFECT_SEPIA },
 //    { CameraParameters::EFFECT_POSTERIZE,  CAMERA_EFFECT_POSTERIZE },
-    { CameraParameters::EFFECT_WHITEBOARD, CAMERA_EFFECT_WHITEBOARD },
-    { CameraParameters::EFFECT_BLACKBOARD, CAMERA_EFFECT_BLACKBOARD },
+//    { CameraParameters::EFFECT_WHITEBOARD, CAMERA_EFFECT_WHITEBOARD },
+//    { CameraParameters::EFFECT_BLACKBOARD, CAMERA_EFFECT_BLACKBOARD },
 //    { CameraParameters::EFFECT_AQUA,       CAMERA_EFFECT_AQUA }
 };
 
@@ -614,10 +614,10 @@ struct SensorType {
 
 static SensorType sensorTypes[] = {
         { "5mp", 2608, 1960, true,  2592, 1944,0x00000fff },
-        { "5mp", 5184, 1944, true,  2592, 1944,0x00000fff }, // actual 5MP blade
-        { "5mp", 2560, 1920, true,  2560, 1920,0x00000fff }, //should be 5MP blade
+        { "5mp", 5184, 1944, true,  2592, 1944,0x00000fff }, // actual 5MP v9
+        { "5mp", 2560, 1920, true,  2560, 1920,0x00000fff }, //should be 5MP v9
         { "3mp", 2064, 1544, false, 2048, 1536,0x000007ff },
-        { "3mp", 4096, 1536, true, 2048, 1536,0x000007ff }, // 3MP blade
+        { "3mp", 4096, 1536, true, 2048, 1536,0x000007ff }, // 3MP v9
         { "2mp", 3200, 1200, false, 1600, 1200,0x000007ff } };
 
 
@@ -939,7 +939,7 @@ void QualcommCameraHardware::filterPreviewSizes(){
         }
     }
 
-    if (!strcmp(mSensorInfo.name, "ov5642"))
+    if (!strcmp(mSensorInfo.name, "ov5640"))
         boardMask = 0xff;
 
     int bitMask = boardMask & sensorType->bitMask;
@@ -1135,7 +1135,7 @@ void QualcommCameraHardware::initDefaultParameters()
 
     if( (!strcmp(sensorType->name, "2mp")) ||
         (!strcmp(mSensorInfo.name, "vx6953")) ||
-		(!strcmp(mSensorInfo.name, "ov5642")) ||
+		(!strcmp(mSensorInfo.name, "ov5640")) ||
 		(!strcmp(mSensorInfo.name, "VX6953")) ) {
         LOGI("Parameter Rolloff is not supported for this sensor");
     } else {
@@ -3839,7 +3839,7 @@ status_t QualcommCameraHardware::setPictureSize(const CameraParameters& params)
     for (int i = 0; i < supportedPictureSizesCount; ++i) {
         if (width == picture_sizes_ptr[i].width
                 && height == picture_sizes_ptr[i].height) {
-            if (!strcmp(mSensorInfo.name, "ov5642") 
+            if (!strcmp(mSensorInfo.name, "ov5640") 
 					&& width == 2592) {
 				/* WTF... The max this "5MPx" sensor supports is 4.75 */
                 width = 2560 ; height = 1920;
@@ -4023,12 +4023,9 @@ status_t QualcommCameraHardware::setBrightness(const CameraParameters& params) {
 status_t QualcommCameraHardware::setExposureCompensation(const CameraParameters& params) {
         int expcomp = params.getInt("exposure-compensation");
 
-	mParameters.set(CameraParameters::KEY_EXPOSURE_COMPENSATION, expcomp);
+        mParameters.set(CameraParameters::KEY_EXPOSURE_COMPENSATION, expcomp);
 
-	if(!strcmp(sensorType->name, "3mp"))
-	  expcomp+=4;
-	else
-	  expcomp+=2;
+        expcomp+=2;
 
         bool ret = native_set_parm(CAMERA_SET_PARM_EXPOSURE_COMPENSATION, sizeof(expcomp),
                                        (void *)&expcomp);
@@ -4087,7 +4084,7 @@ status_t QualcommCameraHardware::setFlash(const CameraParameters& params)
 
 status_t QualcommCameraHardware::setAntibanding(const CameraParameters& params)
 {
-    if(!strcmp(sensorType->name, "2mp") || !strcmp(mSensorInfo.name, "ov5642")) {
+    if(!strcmp(sensorType->name, "2mp") || !strcmp(mSensorInfo.name, "ov5640")) {
         LOGE("Parameter AntiBanding is not supported for this sensor");
         return NO_ERROR;
     }
@@ -4118,7 +4115,7 @@ status_t QualcommCameraHardware::setLensshadeValue(const CameraParameters& param
 {
     if( (!strcmp(sensorType->name, "2mp")) ||
         (!strcmp(mSensorInfo.name, "vx6953")) ||
-		(!strcmp(mSensorInfo.name, "ov5642")) ||
+		(!strcmp(mSensorInfo.name, "ov5640")) ||
 	(!strcmp(mSensorInfo.name, "VX6953")) ) {
         LOGI("Parameter Rolloff is not supported for this sensor");
         return NO_ERROR;

@@ -1,11 +1,11 @@
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/zte/arthur/kernel
+	LOCAL_KERNEL := device/zte/arthur/zImage
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
+    $(LOCAL_KERNEL):zImage
 
 $(call inherit-product, build/target/product/full_base.mk)
 
@@ -32,7 +32,7 @@ PRODUCT_PACKAGES += \
     lights.msm7x30 \
     copybit.msm7x30 \
     overlay.msm7x30 \
-    gps.msm7x30 \
+    gps.arthur \
     libOmxCore \
     libOmxVenc \
     libOmxVdec \
@@ -41,6 +41,10 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm7x30
+
+# Sensors
+PRODUCT_PACKAGES += \
+    sensors.arthur
 
 # Hardware properties
 PRODUCT_COPY_FILES += \
@@ -165,13 +169,12 @@ PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/lib/libqueue.so:system/lib/libqueue.so \
     device/zte/arthur/prebuilt/lib/libreference-cdma-sms.so:system/lib/libreference-cdma-sms.so \
     device/zte/arthur/prebuilt/lib/libreference-ril.so:system/lib/libreference-ril.so \
-    device/zte/arthur/prebuilt/lib/libril.so:system/lib/libril.so \
     device/zte/arthur/prebuilt/lib/libril-qc-1.so:system/lib/libril-qc-1.so \
     device/zte/arthur/prebuilt/lib/libril-qc-qmi-1.so:system/lib/libril-qc-qmi-1.so \
     device/zte/arthur/prebuilt/lib/libril-qcril-hook-oem.so:system/lib/libril-qcril-hook-oem.so \
     device/zte/arthur/prebuilt/lib/libuim.so:system/lib/libuim.so \
     device/zte/arthur/prebuilt/lib/libwms.so:system/lib/libwms.so \
-    device/zte/arthur/prebuilt/lib/libwmsts.so:system/lib/libwmsts.so \
+    device/zte/arthur/prebuilt/lib/libwmsts.so:system/lib/libwmsts.so 
 
 
 #APN
@@ -222,13 +225,14 @@ PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/lib/libQWiFiSoftApCfg.so:system/lib/libQWiFiSoftApCfg.so \
     device/zte/arthur/prebuilt/qcom/softap/hostapd_default.conf:system/qcom/softap/hostapd_default.conf
 
-#Bluetoothe
+#Bluetooth
 PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
     device/zte/arthur/prebuilt/etc/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
     device/zte/arthur/prebuilt/bin/bt_testmode.sh:system/bin/bt_testmode.sh \
     device/zte/arthur/prebuilt/bin/sdptool:system/bin/sdptool \
-    device/zte/arthur/prebuilt/bin/init.btprop.sh:system/bin/init.btprop.sh
+    device/zte/arthur/prebuilt/bin/init.btprop.sh:system/bin/init.btprop.sh \
+    device/zte/arthur/prebuilt/bin/init.modem.sh:system/bin/init.modem.sh
 
 #Other Stuff called in the init.arthur.rc and stuff
 PRODUCT_COPY_FILES += \
@@ -252,13 +256,15 @@ PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/bin/proximity.init:system/bin/proximity.init \
     device/zte/arthur/prebuilt/bin/akmd8962:system/bin/akmd8962 \
     device/zte/arthur/prebuilt/bin/thermald:system/bin/thermald \
-    device/zte/arthur/prebuilt/etc/thermald.conf:system/etc/thermald.conf \
-    device/zte/arthur/prebuilt/lib/hw/sensors.default.so:system/lib/hw/sensors.default.so
+    device/zte/arthur/prebuilt/etc/thermald.conf:system/etc/thermald.conf
 
 
 #Boot Animation
 PRODUCT_COPY_FILES +=\
     device/zte/arthur/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
+
+
+# device/zte/arthur/prebuilt/lib/libril.so:system/lib/libril.so \
 
 
 PRODUCT_NAME := ZTE_Warp

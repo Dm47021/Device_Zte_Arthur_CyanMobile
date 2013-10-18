@@ -36,7 +36,8 @@ WIFI_SDIO_IF_DRIVER_MODULE_PATH := "/system/lib/modules/librasdioif.ko"
 WIFI_SDIO_IF_DRIVER_MODULE_NAME := "librasdioif"
 
 # Use stock libril for now
-TARGET_PROVIDES_LIBRIL := device/zte/arthur/prebuilt/lib/libril.so
+#TARGET_PROVIDES_LIBRIL := device/zte/arthur/prebuilt/lib/libril.so
+TARGET_PROVIDES_LIBRIL := true 
 BOARD_MOBILEDATA_INTERFACE_NAME := "wlan0, rmnet0"
 
 #android optimization
@@ -62,7 +63,8 @@ BOARD_USE_QCOM_PMEM := true
 
 # Kernel
 TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/arthur/recovery_kernel
-TARGET_PREBUILT_KERNEL := device/zte/arthur/kernel
+# Alien Kernel 4 CM7 Version
+TARGET_PREBUILT_KERNEL := device/zte/arthur/zImage
 BOARD_NAND_PAGE_SIZE := 4096 -s 128
 BOARD_KERNEL_CMDLINE := console=ttyMSM1,115200
 BOARD_KERNEL_BASE := 0x00200000

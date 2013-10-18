@@ -383,6 +383,14 @@ service bootanim /system/bin/bootanimation
     disabled
     oneshot
 
+#DM0101713CYAN_warp modem
+service warp_modem /system/bin/sh /system/bin/init.modem.sh
+    oneshot
+
+# DM0101713CYAN_Warp bt.prop 
+service bluetooth_prop /system/bin/sh /system/bin/init.btprop.sh
+    oneshot
+
 service dbus /system/bin/dbus-daemon --system --nofork
     socket dbus stream 660 bluetooth bluetooth
     user bluetooth
@@ -450,5 +458,26 @@ service keystore /system/bin/keystore /data/misc/keystore
 
 service dumpstate /system/bin/dumpstate -s
     socket dumpstate stream 0660 shell log
+    disabled
+    oneshot
+
+#DM0101713CYAN_Warp DHCP / IPRENEW
+service dhcpcd_wlan0 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+
+service dhcpcd_p2p /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+
+service iprenew_wlan0 /system/bin/dhcpcd -n
+    disabled
+    oneshot
+
+service iprenew_p2p /system/bin/dhcpcd -n p2p
+    disabled
+    oneshot
+
+service iprelease_wlan0 /system/bin/dhcpcd -k
     disabled
     oneshot

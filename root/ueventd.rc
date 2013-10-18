@@ -87,3 +87,6 @@
 /dev/pmem_venc            0660   system     audio
 
 /sys/devices/virtual/usb_composite/*   enable      0664  root   system
+
+#MODEM
+/sys/devices/platform/android_usb/functions/modem   enable  0644  root  system

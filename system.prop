@@ -39,6 +39,11 @@ video.accelerate.hw=1
 net.bt.name=Android
 qcom.bt.dev_power_class=2
 
+# Osiris Props
+#
+# Disable the stupid small status bar
+ro.osiris.tiny=0
+
 # Cyanmobile Props
 debug.composition.type=gpu
 persist.sys.composition.type=gpu

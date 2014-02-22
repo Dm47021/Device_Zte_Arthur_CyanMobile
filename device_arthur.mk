@@ -40,11 +40,15 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libOmxVenc \
     libOmxVdec \
-    com.android.future.usb.accessory
+    com.android.future.usb.accessory \
+    WarpParts
+    
 
-# Camera
+## Bluetooth
 PRODUCT_PACKAGES += \
-    camera.msm7x30
+    hcitool \
+    hci_qcomm_init \
+    hciconfig 
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -69,7 +73,6 @@ PRODUCT_COPY_FILES += \
     device/zte/arthur/root/initlogo.rle:/root/initlogo.rle \
     device/zte/arthur/root/init.qcom.rc:/root/init.qcom.rc \
     device/zte/arthur/root/init.qcom.sh:/root/init.qcom.sh \
-    device/zte/arthur/root/init.rc:/root/init.rc \
     device/zte/arthur/root/logo.bmp:/root/logo.bmp \
     device/zte/arthur/root/ueventd.rc:/root/ueventd.rc \
     device/zte/arthur/root/ueventd.arthur.rc:/root/ueventd.arthur.rc \
@@ -146,39 +149,57 @@ PRODUCT_COPY_FILES += \
 
 #RIL
 PRODUCT_COPY_FILES += \
-    device/zte/arthur/prebuilt/bin/port-bridge:system/bin/port-bridge \
-    device/zte/arthur/prebuilt/bin/qmuxd:system/bin/qmuxd \
-    device/zte/arthur/prebuilt/bin/rild:system/bin/rild \
-    device/zte/arthur/prebuilt/lib/libauth.so:system/lib/libauth.so \
-    device/zte/arthur/prebuilt/lib/libcm.so:system/lib/libcm.so \
-    device/zte/arthur/prebuilt/lib/libdiag.so:system/lib/libdiag.so \
-    device/zte/arthur/prebuilt/lib/libdsi_netctrl.so:system/lib/libdsi_netctrl.so \
-    device/zte/arthur/prebuilt/lib/libdsm.so:system/lib/libdsm.so \
-    device/zte/arthur/prebuilt/lib/libdss.so:system/lib/libdss.so \
-    device/zte/arthur/prebuilt/lib/libdsutils.so:system/lib/libdsutils.so \
-    device/zte/arthur/prebuilt/lib/libgsdi_exp.so:system/lib/libgsdi_exp.so \
-    device/zte/arthur/prebuilt/lib/libgstk_exp.so:system/lib/libgstk_exp.so \
-    device/zte/arthur/prebuilt/lib/libidl.so:system/lib/libidl.so \
-    device/zte/arthur/prebuilt/lib/libmmgsdilib.so:system/lib/libmmgsdilib.so \
-    device/zte/arthur/prebuilt/lib/libnetmgr.so:system/lib/libnetmgr.so \
-    device/zte/arthur/prebuilt/lib/libnv.so:system/lib/libnv.so \
-    device/zte/arthur/prebuilt/lib/liboem_rapi.so:system/lib/liboem_rapi.so \
-    device/zte/arthur/prebuilt/lib/liboncrpc.so:system/lib/liboncrpc.so \
-    device/zte/arthur/prebuilt/lib/libpbmlib.so:system/lib/libpbmlib.so \
-    device/zte/arthur/prebuilt/lib/libpdapi.so:system/lib/libpdapi.so \
-    device/zte/arthur/prebuilt/lib/libpdsm_atl.so:system/lib/libpdsm_atl.so \
-    device/zte/arthur/prebuilt/lib/libqdp.so:system/lib/libqdp.so \
-    device/zte/arthur/prebuilt/lib/libqmi.so:system/lib/libqmi.so \
-    device/zte/arthur/prebuilt/lib/libqmiservices.so:system/lib/libqmiservices.so \
-    device/zte/arthur/prebuilt/lib/libqueue.so:system/lib/libqueue.so \
-    device/zte/arthur/prebuilt/lib/libreference-cdma-sms.so:system/lib/libreference-cdma-sms.so \
-    device/zte/arthur/prebuilt/lib/libreference-ril.so:system/lib/libreference-ril.so \
-    device/zte/arthur/prebuilt/lib/libril-qc-1.so:system/lib/libril-qc-1.so \
-    device/zte/arthur/prebuilt/lib/libril-qc-qmi-1.so:system/lib/libril-qc-qmi-1.so \
-    device/zte/arthur/prebuilt/lib/libril-qcril-hook-oem.so:system/lib/libril-qcril-hook-oem.so \
-    device/zte/arthur/prebuilt/lib/libuim.so:system/lib/libuim.so \
-    device/zte/arthur/prebuilt/lib/libwms.so:system/lib/libwms.so \
-    device/zte/arthur/prebuilt/lib/libwmsts.so:system/lib/libwmsts.so 
+	device/zte/arthur/prebuilt/bin/netmgrd:system/bin/netmgrd \
+	device/zte/arthur/prebuilt/bin/qmuxd:system/bin/qmuxd \
+	device/zte/arthur/prebuilt/bin/rild:obj/bin/rild \
+	device/zte/arthur/prebuilt/bin/rild:system/bin/rild \
+	device/zte/arthur/prebuilt/lib/libauth.so:system/lib/libauth.so \
+	device/zte/arthur/prebuilt/lib/libcm.so:system/lib/libcm.so \
+	device/zte/arthur/prebuilt/lib/libcommondefs.so:obj/lib/libcommondefs.so \
+	device/zte/arthur/prebuilt/lib/libcommondefs.so:system/lib/libcommondefs.so \
+	device/zte/arthur/prebuilt/lib/libgsdi_exp.so:system/lib/libgsdi_exp.so \
+	device/zte/arthur/prebuilt/lib/libgstk_exp.so:system/lib/libgstk_exp.so \
+	device/zte/arthur/prebuilt/lib/libgps.so:system/lib/libgps.so \
+	device/zte/arthur/prebuilt/lib/libdiag.so:obj/lib/libdiag.so \
+	device/zte/arthur/prebuilt/lib/libdiag.so:system/lib/libdiag.so \
+	device/zte/arthur/prebuilt/lib/libdl.so:system/lib/libdl.so \
+	device/zte/arthur/prebuilt/lib/libdsi_netctrl.so:system/lib/libdsi_netctrl.so \
+	device/zte/arthur/prebuilt/lib/libdsm.so:system/lib/libdsm.so \
+	device/zte/arthur/prebuilt/lib/libdsprofile.so:system/lib/libdsprofile.so \
+	device/zte/arthur/prebuilt/lib/libdss.so:system/lib/libdss.so \
+	device/zte/arthur/prebuilt/lib/libdssock.so:system/lib/libdssock.so \
+	device/zte/arthur/prebuilt/lib/libdsutils.so:system/lib/libdsutils.so \
+	device/zte/arthur/prebuilt/lib/libidl.so:system/lib/libidl.so \
+	device/zte/arthur/prebuilt/lib/libnetmgr.so:system/lib/libnetmgr.so \
+	device/zte/arthur/prebuilt/lib/libnv.so:system/lib/libnv.so \
+	device/zte/arthur/prebuilt/lib/libping_mdm.so:system/lib/libping_mdm.so \
+	device/zte/arthur/prebuilt/lib/libqdp.so:system/lib/libqdp.so \
+	device/zte/arthur/prebuilt/lib/libqmi.so:system/lib/libqmi.so \
+	device/zte/arthur/prebuilt/lib/liboncrpc.so:system/lib/liboncrpc.so \
+	device/zte/arthur/prebuilt/lib/libqmiservices.so:system/lib/libqmiservices.so \
+	device/zte/arthur/prebuilt/lib/libqueue.so:system/lib/libqueue.so \
+	device/zte/arthur/prebuilt/lib/libloc_api-rpc-qc.so:system/lib/libloc_api-rpc-qc.so \
+	device/zte/arthur/prebuilt/lib/libloc_ext.so:system/lib/libloc_ext.so \
+	device/zte/arthur/prebuilt/lib/libloc-rpc.so:system/lib/libloc-rpc.so \
+	device/zte/arthur/prebuilt/lib/librefcne.so:system/lib/librefcne.so \
+	device/zte/arthur/prebuilt/lib/libreference-cdma-sms.so:system/lib/libreference-cdma-sms.so \
+        device/zte/arthur/prebuilt/lib/libril.so:obj/lib/libril.so \
+        device/zte/arthur/prebuilt/lib/libril.so:system/lib/libril.so \
+        device/zte/arthur/prebuilt/lib/libreference-ril.so:obj/lib/libreference-ril.so \
+        device/zte/arthur/prebuilt/lib/libreference-ril.so:system/lib/libreference-ril.so \
+        device/zte/arthur/prebuilt/lib/libril-qc-1.so:system/lib/libril-qc-1.so \
+        device/zte/arthur/prebuilt/lib/libril-qc-qmi-1.so:system/lib/libril-qc-qmi-1.so \
+        device/zte/arthur/prebuilt/lib/libril-qcril-hook-oem.so:system/lib/libril-qcril-hook-oem.so \
+	device/zte/arthur/prebuilt/lib/libuim.so:system/lib/libuim.so \
+	device/zte/arthur/prebuilt/lib/libwms.so:system/lib/libwms.so \
+	device/zte/arthur/prebuilt/lib/libwmsts.so:system/lib/libwmsts.so \
+	device/zte/arthur/prebuilt/lib/hw/gps.default.so:system/lib/hw/gps.msm7x30.so \
+	device/zte/arthur/prebuilt/lib/libmmgsdilib.so:system/lib/libmmgsdilib.so \
+	device/zte/arthur/prebuilt/lib/libpbmlib.so:system/lib/libpbmlib.so \
+	device/zte/arthur/prebuilt/lib/liboem_rapi.so:system/lib/liboem_rapi.so \
+	device/zte/arthur/prebuilt/lib/libpdsm_atl.so:system/lib/libpdsm_atl.so \
+	device/zte/arthur/prebuilt/lib/libpdapi.so:system/lib/libpdapi.so \
+	device/zte/arthur/prebuilt/lib/libqc-opt.so:system/lib/libqc-opt.so
 
 
 #APN
@@ -189,7 +210,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
     device/zte/arthur/prebuilt/lib/libmmipl.so:system/lib/libmmipl.so \
-    device/zte/arthur/prebuilt/lib/liboemcamera.so:system/lib/liboemcamera.so 
+    device/zte/arthur/prebuilt/lib/liboemcamera.so:system/lib/liboemcamera.so \
+    device/zte/arthur/prebuilt/lib/libcamera.so:system/lib/libcamera.so
 
 #GPS
 PRODUCT_COPY_FILES += \
@@ -213,7 +235,6 @@ PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/etc/firmware/wlan/qcom_wapi_fw.bin:system/etc/firmware/wlan/qcom_wapi_fw.bin \
     device/zte/arthur/prebuilt/etc/firmware/wlan/qcom_wlan_nv.bin:system/etc/firmware/wlan/qcom_wlan_nv.bin \
     device/zte/arthur/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/zte/arthur/prebuilt/bin/wpa_supplicant:system/bin/wpa_supplicant \
     device/zte/arthur/prebuilt/bin/iprenew:system/lib/bin/iprenew
 
 
@@ -231,10 +252,20 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
     device/zte/arthur/prebuilt/bin/bt_testmode.sh:system/bin/bt_testmode.sh \
+    device/zte/arthur/prebuilt/bin/bluetoothd:system/bin/bluetoothd \
+    device/zte/arthur/prebuilt/bin/btwlancoex:system/bin/btwlancoex \
+    device/zte/arthur/prebuilt/bin/hciattach:system/bin/hciattach \
+    device/zte/arthur/prebuilt/bin/hciconfig:system/bin/hciconfig \
+    device/zte/arthur/prebuilt/bin/hci_qcomm_init:system/bin/hci_qcomm_init \
+    device/zte/arthur/prebuilt/bin/hcitool:system/bin/hcitool \
     device/zte/arthur/prebuilt/bin/sdptool:system/bin/sdptool \
     device/zte/arthur/prebuilt/etc/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
     device/zte/arthur/prebuilt/bin/init.btprop.sh:system/bin/init.btprop.sh \
-    device/zte/arthur/prebuilt/bin/init.modem.sh:system/bin/init.modem.sh
+    device/zte/arthur/prebuilt/lib/libbluedroid.so:system/lib/libbluedroid.so \
+    device/zte/arthur/prebuilt/lib/libbluetooth.so:system/lib/libbluetooth.so \
+    device/zte/arthur/prebuilt/lib/libbluetoothd.so:system/lib/libbluetoothd.so 
+
+
 
 #Other Stuff called in the init.arthur.rc and stuff
 PRODUCT_COPY_FILES += \
@@ -265,13 +296,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES +=\
     device/zte/arthur/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
 
-
-# device/zte/arthur/prebuilt/lib/libril.so:system/lib/libril.so \
-
 # Add Qualcomm Properties from Code Aurora 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/system/lib/libqc-opt.so
-
 
 PRODUCT_NAME := ZTE_Warp
 PRODUCT_BRAND := ZTE

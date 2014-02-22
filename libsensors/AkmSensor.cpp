@@ -22,7 +22,7 @@
 #include <dirent.h>
 #include <sys/select.h>
 
-#include <kernel/akm8962.h>
+#include "akm8962.h"
 
 #include <cutils/log.h>
 

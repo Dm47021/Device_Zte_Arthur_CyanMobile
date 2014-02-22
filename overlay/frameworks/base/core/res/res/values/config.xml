@@ -20,6 +20,11 @@
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
 <resources>
+    <!-- Flag indicating whether the surface flinger is inefficient
+         at performing a blur.  Used by parts of the UI to turn off
+         the blur effect where it isn't worth the performance hit. -->
+    <bool name="config_sf_slowBlur">true</bool>
+    
     <!-- Flag indicating whether we should enable the automatic brightness in Settings.
          config_hardware_automatic_brightness_available is not set, so we will use software implementation -->
     <bool name="config_automatic_brightness_available">true</bool>
@@ -77,7 +82,7 @@
          in the config_autoBrightnessLevels array.  This array should have size one greater
          than the size of the config_autoBrightnessLevels array.
     -->
-    <integer-array name="config_autoBrightnessKeyboardBacklightValues">
+    <integer-array name="config_autoBrightnessKeyboardBacklightalues">
         <item>5</item>
         <item>0</item>
         <item>0</item>
@@ -125,8 +130,8 @@
     <!-- Regex array of allowable upstream ifaces for tethering - for example if you want
          tethering on a new interface called "foo2" add <item>"foo\\d"</item> to the array -->
     <string-array translatable="false" name="config_tether_upstream_regexs">
-        <item>"rmnet\\d"</item>
-        <item>"wlan\\d"</item>
+        <item>"rmnet0\\d"</item>
+        <item>"wlan0\\d"</item>
     </string-array>
 
     <string-array translatable="false" name="config_tether_bt_regexs">
@@ -137,7 +142,7 @@
          Wifi interfaces.  If the device doesn't want to support tethering over Wifi this
          should be empty.  An example would be "softap.*" -->
     <string-array translatable="false" name="config_tether_wifi_regexs">
-        <item>"athap0"</item>
+        <item>"wlan0"</item>
     </string-array>
 
 
@@ -155,8 +160,6 @@
     <integer-array name="config_keyboardTapVibePattern">
         <item>30</item>
     </integer-array>
-
-    <bool name="cm_default_is_tablet">true</bool>
 
     <bool name="cm_default_has_soft_buttons">true</bool>
 
@@ -185,4 +188,13 @@
     <bool name="cm_default_power_menu_back">true</bool>
 
     <bool name="cm_default_reverse_volume_behavior">false</bool>
+
+    <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
+    <integer-array name="config_keyboardTapVibePattern">
+        <item>30</item>
+    </integer-array>
+
+    <!-- DM ADDITIONS FOR CYANMOBILE -->
+    <!-- The VoiceMail default value is displayed to my own number if it is true -->
+    <bool name="config_telephony_use_own_number_for_voicemail">false</bool>
 </resources>

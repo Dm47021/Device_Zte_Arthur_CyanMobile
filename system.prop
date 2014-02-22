@@ -1,19 +1,12 @@
 #
 # system.prop for arthur
 #
+
 keyguard.no_require_sim=true
+
 # Ril
-ro.ril.disable.power.collapse=0
-ro.telephony.ril_class=LGEQualcommRIL
-ro.telephony.ril.v3=qcomuiccstack,skipbrokendatacall,signalstrengt​h,datacall,skipnullaid
-ro.ril.def.preferred.network=4
-ro.telephony.default_network=4 
 rild.libpath=/system/lib/libril-qc-1.so
 rild.libargs=-d /dev/smd0
-ro.com.android.dataroaming=false
-ro.ril.enable.managed.roaming=1
-ro.ril.oem.nosim.ecclist=911,112,999,000,08,118,120,122,110,119,995
-ro.ril.emc.mode=2
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
 persist.rild.nitz_long_ons_1=

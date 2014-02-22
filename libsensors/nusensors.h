@@ -51,8 +51,10 @@ int init_nusensors(hw_module_t const* module, hw_device_t** device);
 
 /*****************************************************************************/
 
-#define AKM_DEVICE_NAME     "/dev/akm8962_aot"
-#define TAOS_DEVICE_NAME      "/dev/taos"
+#define AKM_DEVICE_NAME             "/dev/akm8962_aot"
+
+#define TAOS_DEVICE_NAME            "/dev/taos"
+#define ISL_DEVICE_NAME             "/dev/ISL"
 
 #define EVENT_TYPE_ACCEL_X          ABS_Y
 #define EVENT_TYPE_ACCEL_Y          ABS_X
@@ -64,15 +66,14 @@ int init_nusensors(hw_module_t const* module, hw_device_t** device);
 #define EVENT_TYPE_ROLL             ABS_RZ
 #define EVENT_TYPE_ORIENT_STATUS    ABS_RUDDER
 
-#define EVENT_TYPE_MAGV_X           ABS_HAT0Y
-#define EVENT_TYPE_MAGV_Y           ABS_HAT0X
-//#define EVENT_TYPE_MAGV_X           ABS_HAT0X
-//#define EVENT_TYPE_MAGV_Y           ABS_HAT0Y
+#define EVENT_TYPE_MAGV_X           ABS_HAT0X
+#define EVENT_TYPE_MAGV_Y           ABS_HAT0Y
 #define EVENT_TYPE_MAGV_Z           ABS_BRAKE
 
 #define EVENT_TYPE_TEMPERATURE      ABS_THROTTLE
 #define EVENT_TYPE_STEP_COUNT       ABS_GAS
 #define EVENT_TYPE_LIGHT            ABS_MISC
+#define EVENT_TYPE_PROXIMITY        ABS_DISTANCE
 
 #define LSG                         (700.0f)
 
@@ -86,7 +87,7 @@ int init_nusensors(hw_module_t const* module, hw_device_t** device);
 // conversion of magnetic data to uT units
 #define CONVERT_M                   (1.0f/16.0f)
 #define CONVERT_M_X                 (-CONVERT_M)
-#define CONVERT_M_Y                 (-CONVERT_M)
+#define CONVERT_M_Y                 (CONVERT_M)
 #define CONVERT_M_Z                 (-CONVERT_M)
 
 #define CONVERT_O                   (1.0f/64.0f)

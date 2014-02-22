@@ -1,8 +1,13 @@
-# inherit from the proprietary version
--include device/zte/arthur/BoardConfigVendor.mk
 
+LOCAL_PATH := $(call my-dir)
 
-USE_CAMERA_STUB := false 
+TARGET_SPECIFIC_HEADER_PATH := device/zte/arthur/include
+
+# Camera
+USE_CAMERA_STUB := true
+BOARD_NEEDS_MEMORYHEAPPMEM := true
+TARGET_DISABLE_ARM_PIE := true
+BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true
 
 # Audio
 TARGET_PROVIDES_LIBAUDIO := true
@@ -12,6 +17,7 @@ BOARD_USES_QCOM_RESETALL := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
@@ -25,18 +31,14 @@ TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 # Init
-TARGET_PROVIDES_INIT_RC := true
-
-# Use stock libril for now
-#TARGET_PROVIDES_LIBRIL := device/zte/arthur/prebuilt/lib/libril.so
-TARGET_PROVIDES_LIBRIL := true 
+TARGET_PROVIDES_INIT_RC := false
 
 #android optimization
 WITH_JIT := true
 ENABLE_JSC_JIT := true
+TARGET_WEBCORE_ENABLE_GIF := true
 WITH_DEXPREOPT := true
 JS_ENGINE := v8
-
 
 #Open GL Driver Config
 TARGET_GRALLOC_USES_ASHMEM := true
@@ -44,10 +46,6 @@ TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 BOARD_OVERLAY_MINIFICATION_LIMIT := 2
 BOARD_EGL_CFG := device/zte/arthur/prebuilt/lib/egl/egl.cfg
 BOARD_HAS_FLIPPED_SCREEN := true
-
-# Qualcomm Extensions
-#TARGET_USE_QCRILHOOK_FRAMEWORK_EXTENSION := true
-#TARGET_USE_QCNVITEM_FRAMEWORK_EXTENSION := true
 
 # GPS Related Defines
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := arthur
@@ -59,16 +57,14 @@ BOARD_USES_QCOM_GPS := true
 BOARD_USE_QCOM_PMEM := true
 
 # Wifi
-BOARD_HAS_QCOM_WLAN := true
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 WPA_SUPPLICANT_VERSION := VER_0_6_X
+BOARD_WLAN_DEVICE := libra
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/libra.ko"
 WIFI_DRIVER_MODULE_NAME := "libra"
-HOSTAPD_VERSION := VER_0_6_X
 WIFI_SDIO_IF_DRIVER_MODULE_PATH := "/system/lib/modules/librasdioif.ko"
 WIFI_SDIO_IF_DRIVER_MODULE_NAME := "librasdioif"
-WIFI_SDIO_IF_DRIVER_MODULE_ARG  := ""
-
+BOARD_WEXT_NO_COMBO_SCAN := true
 
 # Kernel
 TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/arthur/recovery_kernel

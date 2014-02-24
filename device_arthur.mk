@@ -68,6 +68,7 @@ PRODUCT_COPY_FILES += \
 # Boot init
 PRODUCT_COPY_FILES += \
     device/zte/arthur/root/init:/root/init \
+    device/zte/arthur/root/init.rc:/root/init.rc \
     device/zte/arthur/root/init.arthur.rc:/root/init.arthur.rc \
     device/zte/arthur/root/init.goldfish.rc:/root/init.goldfish.rc \
     device/zte/arthur/root/initlogo.rle:/root/initlogo.rle \
@@ -278,9 +279,6 @@ PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/bin/hdmid:system/bin/hdmid \
     device/zte/arthur/prebuilt/bin/ds_fmc_appd:system/bin/ds_fmc_appd \
     device/zte/arthur/prebuilt/bin/sprintdiag:system/bin/sprintdiag \
-    device/zte/arthur/prebuilt/bin/sdlog:system/bin/sdlog \
-    device/zte/arthur/prebuilt/app/Sdlog.apk:system/app/Sdlog.apk \
-    device/zte/arthur/prebuilt/app/Sdlog.odex:system/app/Sdlog.odex \
     device/zte/arthur/prebuilt/bin/DrmHost:system/bin/DrmHost
 
 

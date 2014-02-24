@@ -31,7 +31,7 @@ TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 # Init
-TARGET_PROVIDES_INIT_RC := false
+TARGET_PROVIDES_INIT_RC := true
 
 #android optimization
 WITH_JIT := true
@@ -57,21 +57,23 @@ BOARD_USES_QCOM_GPS := true
 BOARD_USE_QCOM_PMEM := true
 
 # Wifi
-BOARD_WPA_SUPPLICANT_DRIVER := WEXT
-WPA_SUPPLICANT_VERSION := VER_0_6_X
-BOARD_WLAN_DEVICE := libra
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/libra.ko"
-WIFI_DRIVER_MODULE_NAME := "libra"
-WIFI_SDIO_IF_DRIVER_MODULE_PATH := "/system/lib/modules/librasdioif.ko"
-WIFI_SDIO_IF_DRIVER_MODULE_NAME := "librasdioif"
+# Defines for external/wpa_supplicant_*
+WPA_SUPPLICANT_VERSION       := VER_0_6_X
+BOARD_WPA_SUPPLICANT_DRIVER  := WEXT
+BOARD_WLAN_DEVICE            := libra
+WIFI_DRIVER_MODULE_PATH      := "/system/lib/modules/libra.ko"
+WIFI_DRIVER_MODULE_NAME      := "libra"
+WIFI_EXT_MODULE_PATH         := "/system/lib/modules/librasdioif.ko"
+WIFI_EXT_MODULE_NAME         := "librasdioif"
 BOARD_WEXT_NO_COMBO_SCAN := true
+WPA_BUILD_SUPPLICANT := true
 
 # Kernel
 TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/arthur/recovery_kernel
 # Alien Kernel 4 CM7 Version
 TARGET_PREBUILT_KERNEL := device/zte/arthur/zImage
 BOARD_NAND_PAGE_SIZE := 4096 -s 128
-BOARD_KERNEL_CMDLINE := console=ttyMSM1,115200
+BOARD_KERNEL_CMDLINE := console=ttyMSM1,115200 androidboot.hardware=arthur
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 4096
 

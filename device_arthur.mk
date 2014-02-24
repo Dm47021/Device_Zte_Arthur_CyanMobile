@@ -36,12 +36,12 @@ PRODUCT_PACKAGES += \
     lights.msm7x30 \
     copybit.arthur \
     overlay.default \
-    gps.arthur \
     libOmxCore \
     libOmxVenc \
     libOmxVdec \
     com.android.future.usb.accessory \
-    WarpParts
+    WarpParts \
+    prox_cal
     
 
 ## Bluetooth
@@ -194,7 +194,6 @@ PRODUCT_COPY_FILES += \
 	device/zte/arthur/prebuilt/lib/libuim.so:system/lib/libuim.so \
 	device/zte/arthur/prebuilt/lib/libwms.so:system/lib/libwms.so \
 	device/zte/arthur/prebuilt/lib/libwmsts.so:system/lib/libwmsts.so \
-	device/zte/arthur/prebuilt/lib/hw/gps.default.so:system/lib/hw/gps.msm7x30.so \
 	device/zte/arthur/prebuilt/lib/libmmgsdilib.so:system/lib/libmmgsdilib.so \
 	device/zte/arthur/prebuilt/lib/libpbmlib.so:system/lib/libpbmlib.so \
 	device/zte/arthur/prebuilt/lib/liboem_rapi.so:system/lib/liboem_rapi.so \
@@ -223,7 +222,8 @@ PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/lib/libloc-rpc.so:system/lib/libloc-rpc.so \
     device/zte/arthur/prebuilt/lib/liboncrpc.so:system/lib/liboncrpc.so \
     device/zte/arthur/prebuilt/lib/hw/gps.default.so:system/lib/hw/gps.default.so \
-    device/zte/arthur/prebuilt/bin/loc_api_app:system/bin/loc_api_app
+    device/zte/arthur/prebuilt/bin/loc_api_app:system/bin/loc_api_app 
+    
 
 #WiFi
 PRODUCT_COPY_FILES += \

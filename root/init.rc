@@ -229,17 +229,13 @@ on post-fs
 	
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     mkdir /data/system 0775 system system
-    # wpa_supplicant socket (unix socket mode) 
-    mkdir /data/system/wpa_supplicant 0771 wifi wifi 
-    chmod 0771 /data/system/wpa_supplicant 
-    chown wifi wifi /data/system/wpa_supplicant 
     symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 	
     #set the right for wlan driver to control slot3's polling property
     chown system system /sys/bus/platform/devices/msm_sdcc.3/polling
-#=======create WLAN filesystem structure ---==========================	
-# ZTE_ZBS_20110107 ---  
+
     setprop wifi.chip.type WCN
+#=======create WLAN filesystem structure ---==========================	
     chown root system /sys/module/g_android/parameters/product_id
     chmod 0664 /sys/module/g_android/parameters/product_id
     mkdir /data/local 0751 root root
@@ -550,11 +546,12 @@ service map /system/bin/sdptool add --channel=16 MAS
 service installd /system/bin/installd
     socket installd stream 600 system system
 
-## WPA Supplicant using Unix standard socket ##
-service wpa_supplicant /system/bin/wpa_supplicant -dd -Dwext -iwlan0 -c /system/etc/wifi/wpa_supplicant.conf 
-group system wifi inet 
-disabled 
-oneshot 
+service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf -dd
+    user root
+    group wifi inet
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL wlan0
     group system dhcp

@@ -33,6 +33,7 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     librs_jni \
     gralloc.arthur \
+    gps.arthur \
     lights.msm7x30 \
     copybit.arthur \
     overlay.default \
@@ -41,9 +42,9 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     com.android.future.usb.accessory \
     WarpParts \
-    prox_cal
+    prox_cal \
+    libcamera
     
-
 ## Bluetooth
 PRODUCT_PACKAGES += \
     hcitool \
@@ -105,7 +106,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/lib/libaudioalsa.so:system/lib/libaudioalsa.so \
     device/zte/arthur/prebuilt/lib/libaudioalsa.so:/obj/lib/libaudioalsa.so \
-    device/zte/arthur/prebuilt/lib/libcommondefs.so:/obj/lib/libcommondefs.so 
+    device/zte/arthur/prebuilt/lib/libcommondefs.so:/obj/lib/libcommondefs.so \
+    device/zte/arthur/prebuilt/lib/libgps.so:/obj/lib/libgps.so
 
 #Adreno
 PRODUCT_COPY_FILES += \
@@ -208,10 +210,10 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_COPY_FILES += \
+    device/zte/arthur/prebuilt/lib/libgemini.so:system/lib/libgemini.so \
     device/zte/arthur/prebuilt/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
     device/zte/arthur/prebuilt/lib/libmmipl.so:system/lib/libmmipl.so \
-    device/zte/arthur/prebuilt/lib/liboemcamera.so:system/lib/liboemcamera.so \
-    device/zte/arthur/prebuilt/lib/libcamera.so:system/lib/libcamera.so
+    device/zte/arthur/prebuilt/lib/liboemcamera.so:system/lib/liboemcamera.so 
 
 #GPS
 PRODUCT_COPY_FILES += \
@@ -221,8 +223,9 @@ PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/lib/libloc_ext.so:system/lib/libloc_ext.so \
     device/zte/arthur/prebuilt/lib/libloc-rpc.so:system/lib/libloc-rpc.so \
     device/zte/arthur/prebuilt/lib/liboncrpc.so:system/lib/liboncrpc.so \
-    device/zte/arthur/prebuilt/lib/hw/gps.default.so:system/lib/hw/gps.default.so \
     device/zte/arthur/prebuilt/bin/loc_api_app:system/bin/loc_api_app 
+
+#device/zte/arthur/prebuilt/lib/hw/gps.default.so:system/lib/hw/gps.default.so \
     
 
 #WiFi

@@ -223,7 +223,8 @@ PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/lib/libloc_ext.so:system/lib/libloc_ext.so \
     device/zte/arthur/prebuilt/lib/libloc-rpc.so:system/lib/libloc-rpc.so \
     device/zte/arthur/prebuilt/lib/liboncrpc.so:system/lib/liboncrpc.so \
-    device/zte/arthur/prebuilt/bin/loc_api_app:system/bin/loc_api_app 
+    device/zte/arthur/prebuilt/bin/loc_api_app:system/bin/loc_api_app \
+    device/zte/arthur/prebuilt/etc/gps.conf:system/etc/gps.conf 
 
 #device/zte/arthur/prebuilt/lib/hw/gps.default.so:system/lib/hw/gps.default.so \
     

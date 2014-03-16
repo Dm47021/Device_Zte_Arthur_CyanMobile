@@ -1,0 +1,11 @@
+#!/system/bin/sh
+#
+# 55swap - creates /data/swap (if necessary) and enables swap
+#          Also adjusts minfree accordingly. Swap file is 256MB
+#
+if [ ! -f /data/swap ]; then
+  busybox dd if=/dev/zero of=/data/swap bs=1k count=256000 
+  busybox mkswap /data/swap   
+fi
+swapon /data/swap
+echo "500,1000,20000,20000,20000,25000" > /sys/module/lowmemorykiller/parameters/minfree

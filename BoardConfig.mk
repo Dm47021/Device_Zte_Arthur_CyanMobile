@@ -4,7 +4,7 @@ LOCAL_PATH := $(call my-dir)
 TARGET_SPECIFIC_HEADER_PATH := device/zte/arthur/include
 
 # Camera
-USE_CAMERA_STUB := false
+USE_CAMERA_STUB := true
 BOARD_NEEDS_MEMORYHEAPPMEM := true
 TARGET_DISABLE_ARM_PIE := true
 BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true
@@ -36,14 +36,20 @@ TARGET_PROVIDES_INIT_RC := true
 #android optimization
 WITH_JIT := true
 ENABLE_JSC_JIT := true
-TARGET_WEBCORE_ENABLE_GIF := true
 WITH_DEXPREOPT := true
 JS_ENGINE := v8
+
+# Web Optimizations
+ARCH_ARM_HAVE_VFP := true
+TARGET_WEBCORE_ENABLE_GIF := true
+ENABLE_WTF_USE_ACCELERATED_COMPOSITING := true
 
 #Open GL Driver Config
 TARGET_GRALLOC_USES_ASHMEM := true
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 BOARD_OVERLAY_MINIFICATION_LIMIT := 2
+BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
+BOARD_NO_RGBX_8888 := true
 BOARD_EGL_CFG := device/zte/arthur/prebuilt/lib/egl/egl.cfg
 BOARD_HAS_FLIPPED_SCREEN := true
 
@@ -51,9 +57,7 @@ BOARD_HAS_FLIPPED_SCREEN := true
 BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := arthur
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
-#BOARD_GPS_LIBRARIES := libgps
-#BOARD_USES_GPSSHIM := true
-#BOARD_GPS_NEEDS_XTRA := true
+BOARD_GPS_LIBRARIES := libloc_api
 
 # Qcom Hardware
 BOARD_USES_QCOM_HARDWARE := true
@@ -82,6 +86,8 @@ BOARD_KERNEL_CMDLINE := console=ttyMSM1,115200 androidboot.hardware=arthur
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 4096
 
+# Sensors
+BOARD_VENDOR_USE_AKMD := akm8962
 
 # Recovery
 TARGET_BOOTLOADER_BOARD_NAME := arthur
@@ -126,6 +132,6 @@ BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 
 # Releasetools
-TARGET_PROVIDES_RELEASETOOLS := true
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/zte/arthur/releasetools/arthur_ota_from_target_files
+TARGET_RELEASETOOLS_EXTENSIONS := device/zte/common
+TARGET_CUSTOM_RELEASETOOL := device/zte/arthur/tools/releasetools
 

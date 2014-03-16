@@ -5,6 +5,7 @@
 keyguard.no_require_sim=true
 
 # Ril
+ro.telephony.ril_class=ZTEWarp
 rild.libpath=/system/lib/libril-qc-1.so
 rild.libargs=-d /dev/smd0
 persist.rild.nitz_plmn=
@@ -19,6 +20,15 @@ persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV
 DEVICE_PROVISIONED=1
 
+# Oem
+ro.build.baseband_version=N860B01
+ro.build.pri.version=61007
+ro.com.google.clientidbase=android-zte
+ro.com.google.clientidbase.yt=android-zte
+ro.com.google.clientidbase.am=android-zte
+ro.com.google.clientidbase.ms=android-zte
+ro.com.google.clientidbase.gmm=android-zte
+
 wifi.interface=wlan0
 ro.config.wifi_chip_is_bcm=false
 wifi.supplicant_scan_interval=15
@@ -32,10 +42,9 @@ video.accelerate.hw=1
 net.bt.name=Android
 qcom.bt.dev_power_class=2
 
-# Osiris Props
-#
-# Disable the stupid small status bar
-ro.osiris.tiny=0
+# dmm
+ro.dev.dmm=1
+dev.dmm.dpd.trigger_delay=30
 
 # Cyanmobile Props
 debug.composition.type=gpu
@@ -48,5 +57,7 @@ dalvik.vm.dexopt-data-only=1
 ro.config.hw_menu_unlockscreen=false
 ro.service.swiqi.supported=true
 debug.sf.hw=1
+
+
 
 

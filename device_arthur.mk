@@ -42,8 +42,7 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     com.android.future.usb.accessory \
     WarpParts \
-    prox_cal \
-    libcamera
+    prox_cal
     
 ## Bluetooth
 PRODUCT_PACKAGES += \
@@ -213,7 +212,9 @@ PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/lib/libgemini.so:system/lib/libgemini.so \
     device/zte/arthur/prebuilt/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
     device/zte/arthur/prebuilt/lib/libmmipl.so:system/lib/libmmipl.so \
-    device/zte/arthur/prebuilt/lib/liboemcamera.so:system/lib/liboemcamera.so 
+    device/zte/arthur/prebuilt/lib/liboemcamera.so:system/lib/liboemcamera.so \
+    device/zte/arthur/prebuilt/lib/libcamera.so:system/lib/libcamera.so \
+    device/zte/arthur/prebuilt/lib/libcamera.so:obj/lib/libcamera.so
 
 #GPS
 PRODUCT_COPY_FILES += \
@@ -247,11 +248,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/bin/hostapd:system/bin/hostapd \
     device/zte/arthur/prebuilt/bin/hostapd_cli:system/bin/hostapd_cli \
-    device/zte/arthur/prebuilt/hostapd/hostapd.accept:system/hostapd/hostapd.accept \
-    device/zte/arthur/prebuilt/hostapd/hostapd.deny:system/hostapd/hostapd.deny \
-    device/zte/arthur/prebuilt/hostapd/hostapd.conf:system/hostapd/hostapd.conf \
-    device/zte/arthur/prebuilt/lib/libQWiFiSoftApCfg.so:system/lib/libQWiFiSoftApCfg.so \
-    device/zte/arthur/prebuilt/qcom/softap/hostapd_default.conf:system/qcom/softap/hostapd_default.conf
+    device/zte/arthur/prebuilt/hostapd/hostapd.conf:system/etc/wifi/hostapd.conf \
+    device/zte/arthur/prebuilt/lib/libQWiFiSoftApCfg.so:system/lib/libQWiFiSoftApCfg.so 
 
 #Bluetooth
 PRODUCT_COPY_FILES += \
@@ -294,9 +292,10 @@ PRODUCT_COPY_FILES += \
     device/zte/arthur/prebuilt/etc/thermald.conf:system/etc/thermald.conf
 
 
-#Boot Animation
+# Init.d Scripts
 PRODUCT_COPY_FILES +=\
-    device/zte/arthur/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
+    device/zte/arthur/55swap:system/etc/init.d/55swap \
+    device/zte/arthur/tune2fsext4:system/etc/init.d/tune2fsext4
 
 # Add Qualcomm Properties from Code Aurora 
 PRODUCT_PROPERTY_OVERRIDES += \
